@@ -22,7 +22,6 @@ const badgeEl = document.querySelector("header .badges");
 window.addEventListener(
   "scroll",
   _.throttle(function () {
-    console.log("scroll!");
     // 윈도우를 스크롤 했을 때 함수가 수십 개가 한 번에 실행되는데,
     // 0.3초 단위로 부하를 줘서 함수가 우르르 실행되는 것을 방지하는 용도로
     // 로데시에서 제공하는 throttle 기능을 도입.
@@ -50,3 +49,11 @@ window.addEventListener(
     }
   }, 300)
 );
+
+const fadeEls = document.querySelectorAll(".visual .fade-in");
+fadeEls.forEach(function (fadeEl, index) {
+  gsap.to(fadeEl, 1, {
+    delay: (index + 1) * 0.7,
+    opacity: 1,
+  });
+});
